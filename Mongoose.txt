@@ -1,4 +1,11 @@
-Working with mongoose package:-
+Working with model:-
+*******************
+model is made when ever, we are intracting with Any database (mysql,Postgres,mongodb)
+if You want to work with mongodb.
+
+
+
+Working with mongoose package:,-
 *****************************
 
 What is mongoose package package :-
@@ -7,20 +14,58 @@ Consider I have App
 2. mongoose package provide inbuilt models to interact with collection
    to perform crud related Operations.
 
+Node Application => data reprentation JSON Object or Document Objects.
+Mongodb=> data reprentation Jspn Object or Document Object.
+
+Node App and Mongodb : data reprentation same 
+node App <--------- driver(connection Tool) --------> Mongodb.
+node App <---------- mongodB package (driver S/W) -------------> mongodB.
+
+mongoose package vs mongodB package:-
+mongoose : latest version
+mongodB : oldest version
+
+likewise, express package made on the top of http module.
+similarly, mongoose package is made on the top of mongodB package.
+mongodB : official driver.
+mongoose : schema,model,driver, readyMade Function crud easy.
+
 Node App ----> Mongo-db
 		Collection Behalf (mongodb community version.)
+Acid :	Atoms consist or Isolated Duracel.
 
+Node App ----->Mongodb.
 you cannot directly connect it
 There should be some package which can convert node Asynchronous calls(Event Loops Calls) to mongodb calls we use some external package called as mongoose package.
+
+Important Rule :-
+mongodb : latest 7.x 
+mongodb : latest 6.x 
+stable verson mongo : 5.x
+
+as mongodb goes on upgrading......
+same as package will be upgrading.....
+new function will come and older function will go.(deprecated -- Error)
+
+Queries are devide into three parts
+************************************
+1. standard function(insert, update, upsert,remove,.....) : always runs in a every version.
+2. new Function(+insertOne, +insertMany, +save,.....) : as package new function come.
+3. deprecated function(-insertOne, -insertMany, +save,......) : does not works in new version but work in lower version.
+
 
 How to install mongoose package:-
 you can install from npm server
 command
-npm install
+npm install mongoose
+or
+Add dependency
+npm install 
 
 we need create package.json file for installing the package
 How to create package.json for mongoose library
-
+npm init-y
+open package.json Add dependency.
 {
 	"name":"crud",
 	"license":"MIT",
@@ -28,13 +73,18 @@ How to create package.json for mongoose library
 	"version":"1.0.0",
 	"description":"Crud Application for Demo Purpose",
 	"dependencies":{
-		"mongoose":"6.1.10"
+		"mongoose":"6.1.10",
+		"mongoose":">=5.0.0",
+		"mongoose":"<=7.0.0",
+		"mongoose":"latest",
+		"mongoose":"^5.0.0"  // ^ means just one version newer
 	}
 
 }
 
 
-As soon as command npm install
+As soon as dependency Added, Run command 
+$ npm install
 node_modules 
 	mongoose package
 	package.json
@@ -43,12 +93,16 @@ node_modules
 	Transitive Dependencies
 	package A ---> Dependent ---> Package B
 package.json
-	Information
+	All Information can be seen in package.json and package-lock.json 
 
 What is difference B/w package.json and package.lock.json
+*********************************************************
 package.json : current package information for developement
 package.lock.json : all other package information connected to current package will be utilise 
 in the developement use.
+
+How to upgrade Entire package :- 
+*********************************
 
 Entire Package Upgrade : package.lock.json Delete Create new package.json mongoose version change
 Entire package New
@@ -57,10 +111,67 @@ Older version maintain
 package.json delete and npm install package.lock.json older version information, it will install
 older package.
 
+***********************************
 How to connect to mongodB
 1. Run mongod server
 2. Run mongoclient to check databases,collection,data
-	
+
+how to use 	
+> use ecommerce
+switched to db ecommerce
+> db.createCollection("products")
+{ "ok" : 1 }
+> show databases
+admin      0.000GB
+collage    0.000GB
+config     0.000GB
+ecommerce  0.000GB
+local      0.000GB
+> show collections
+products
+> db.getCollectionNames()
+[ "products" ]
+>
+
+Important Points:-
+1. Server Name : ecommerce
+2. collection Name (table) : products
+
+InOrder to connect with Any database
+1. hostname : localhost
+2. port : 27017
+3. databases : ecommerce
+4. username : LAPTOP-NAME 
+5. Password : ""
+when you use Atlas and cluster then?
+1. username : prabhat52df5598
+2. password : lqerygvsg45thj80c
+with Authentication.
+
+connection with mysql :-
+connection.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "ecommerce",
+	port: 3306
+})
+connection.connect();
+connection.connect();
+connection create -----> connection Object.
+but in mongodb we dont have connection Object.
+
+How to create connection:-
+we use connection string or connection url:-
+connection Url : mongodb: //hostname:port/databasename
+local connection : mongodb: //localhost:27017/ecommerce
+when we use shell connection
+******************************
+mongoShell by default : mongodb://
+
+
+
+
 Steps to connect
 *****************
 crud
