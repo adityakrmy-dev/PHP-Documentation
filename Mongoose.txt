@@ -1,71 +1,74 @@
-Working with model:-
-*******************
-model is made when ever, we are intracting with Any database (mysql,Postgres,mongodb)
-if You want to work with mongodb.
 
+working with Models:-
+****************************
+Model is made when ever, we are interacting with Any database (mysql,Postgres,mongodb.)
+if you want to work with mongodb.
 
-
-Working with mongoose package:,-
-*****************************
-
-What is mongoose package package :-
-1. mongoose is a package(node) used to connect Node App to Mongodb App
+What is mongoose package:-
+1. mongoose is a package(node) used to connect Node App to Mongodb App.
 Consider I have App
 2. mongoose package provide inbuilt models to interact with collection
    to perform crud related Operations.
 
-Node Application => data reprentation JSON Object or Document Objects.
-Mongodb=> data reprentation Jspn Object or Document Object.
 
-Node App and Mongodb : data reprentation same 
-node App <--------- driver(connection Tool) --------> Mongodb.
-node App <---------- mongodB package (driver S/W) -------------> mongodB.
+Node Application => data represenatation JSON Object or Document Objects.
+Mongodb => data representation Json Object or Document Object.
 
-mongoose package vs mongodB package:-
+Node App and Mongodb : data reprenstation same 
+node App <---------driver(connection Tool)--------> Mongodb.
+node App <--------------mongodb package (driver S/W) ----------> mongodb.
+
+mongoose package vs mongodb package:-
 mongoose : latest version
-mongodB : oldest version
+mongodb : Oldest version
 
 likewise, express package made on the top of http module.
-similarly, mongoose package is made on the top of mongodB package.
-mongodB : official driver.
-mongoose : schema,model,driver, readyMade Function crud easy.
+similarly, mongoose package is made on the top of mongodb package.
+mongodb : official driver.
+mongooose : Schema,model, driver, readyMade Function crud easy.
 
-Node App ----> Mongo-db
-		Collection Behalf (mongodb community version.)
-Acid :	Atoms consist or Isolated Duracel.
+Node App ------> Mongo-db
+		 Collection Behalf (mongodb community version.)
+Other package instead of mongoose, mongodb.
+Acid : Atoms consist of Isolated Duracel
 
-Node App ----->Mongodb.
+Node App ---> Mongodb.
 you cannot directly connect it
 There should be some package which can convert node Asynchronous calls(Event Loops Calls) to mongodb calls we use some external package called as mongoose package.
 
 Important Rule :-
-mongodb : latest 7.x 
+mongodb : latest 7.x
 mongodb : latest 6.x 
-stable verson mongo : 5.x
+stable version mongodb : 5.x
 
-as mongodb goes on upgrading......
+as mongodb goes on upgrading..... 
 same as package will be upgrading.....
-new function will come and older function will go.(deprecated -- Error)
+new function will come and older function will go.(depracated --Error)
 
-Queries are devide into three parts
-************************************
-1. standard function(insert, update, upsert,remove,.....) : always runs in a every version.
-2. new Function(+insertOne, +insertMany, +save,.....) : as package new function come.
-3. deprecated function(-insertOne, -insertMany, +save,......) : does not works in new version but work in lower version.
+****************************************
+Queries are divided three parts:-
+****************************************
 
+1. standard function(insert,update,upsert,remove) : always runs in a every version.
+2. new function(+insertOne,+insertMany,+save....) : as package update new function come.
+3. deprecated function(-insertOne, -insertMany, +save...): does not works in new version but does    work in lower version.
 
 How to install mongoose package:-
+**********************************
+
 you can install from npm server
 command
 npm install mongoose
-or
-Add dependency
-npm install 
+or 
+Add dependency 
+npm install.
 
 we need create package.json file for installing the package
 How to create package.json for mongoose library
-npm init-y
-open package.json Add dependency.
+************************************************
+npm init -y
+open package.json Add depedency.
+
 {
 	"name":"crud",
 	"license":"MIT",
@@ -75,9 +78,10 @@ open package.json Add dependency.
 	"dependencies":{
 		"mongoose":"6.1.10",
 		"mongoose":">=5.0.0",
-		"mongoose":"<=7.0.0",
+		"mongoose":"<7.0.0",
 		"mongoose":"latest",
-		"mongoose":"^5.0.0"  // ^ means just one version newer
+		"mongoose":"^5.0.0", //E=mc^2  => //E=mc^
+		
 	}
 
 }
@@ -93,15 +97,16 @@ node_modules
 	Transitive Dependencies
 	package A ---> Dependent ---> Package B
 package.json
-	All Information can be seen in package.json and package-lock.json 
+	All Information can be seen in package.json and Package-lock.json
 
-What is difference B/w package.json and package.lock.json
-*********************************************************
+What is difference B/w package.json and package-lock.json?
+
 package.json : current package information for developement
-package.lock.json : all other package information connected to current package will be utilise 
+
+package-lock.json : all other package information connected to current package will be utilise 
 in the developement use.
 
-How to upgrade Entire package :- 
+How to upgrade Entire package :-
 *********************************
 
 Entire Package Upgrade : package.lock.json Delete Create new package.json mongoose version change
@@ -111,19 +116,25 @@ Older version maintain
 package.json delete and npm install package.lock.json older version information, it will install
 older package.
 
-***********************************
+**********************************
 How to connect to mongodB
 1. Run mongod server
 2. Run mongoclient to check databases,collection,data
 
-how to use 	
+Now create a Database in Mongodb client :-
+Make sure you server instance is running.
 > use ecommerce
 switched to db ecommerce
-> db.createCollection("products")
-{ "ok" : 1 }
 > show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db
+ecommerce
+> db.createCollection('products')
+{ "ok" : 1 }
+> show databases;
 admin      0.000GB
-collage    0.000GB
 config     0.000GB
 ecommerce  0.000GB
 local      0.000GB
@@ -134,44 +145,186 @@ products
 >
 
 Important Points:-
-1. Server Name : ecommerce
+1. Server Instance mongodb Running state.
+2. shell use database create and collection create.
+
+1. database Name : ecommerce 
 2. collection Name (table) : products
 
-InOrder to connect with Any database
+InOrder to connect with Any database 
 1. hostname : localhost
 2. port : 27017
-3. databases : ecommerce
-4. username : LAPTOP-NAME 
+3. database : ecommerce 
+4. username : LAPTOP-NAME
 5. Password : ""
+Without Authentication.
+
 when you use Atlas and cluster then?
-1. username : prabhat52df5598
-2. password : lqerygvsg45thj80c
+1. username  : username717171h
+2. password : 1qw23er45t6y7ui8o9
 with Authentication.
 
 connection with mysql :-
 connection.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "ecommerce",
-	port: 3306
+  host:"localhost",
+  user:"root",
+  password :"",
+  database : "ecommerce",
+  port : 3306
 })
 connection.connect();
-connection.connect();
-connection create -----> connection Object.
-but in mongodb we dont have connection Object.
+connection create ------> connection Object.
+But in mongodb we dont have connection Object.
 
-How to create connection:-
-we use connection string or connection url:-
-connection Url : mongodb: //hostname:port/databasename
-local connection : mongodb: //localhost:27017/ecommerce
-when we use shell connection
-******************************
-mongoShell by default : mongodb://
+How to create connnection:-
+we use connection String or connection Url:-
+connection Url : mongodb://hostname:port/databasename
+local connection : mongodb://localhost:27017/ecommerce
+when we use shell connection 
+*****************************
+mongoshell by default : mongodb://localhost:27017/
+use ecommerce
+mongodb://localhost:27017/ecommerce
+
+Test connection :-
+*********************
+GUI Compass : open connection string paste > connect > ecommerce.
+Atlas connection using mongodb : done using compass.
+you can also connection Atlas with, mongo shell you need to have connection string.
+in url encoded form with no-blocking Firewall.
+
+Why Atlas is secure ?
+************************
+Note :: Atlas is very secure, because it allows connection from, specific IP, that also 
+for specific time.
+by default : 6 hours whitelist after that connection will break.
+
+How to Allow incoming connection from Anywhere ?
+*************************************************
+1. open Atlas clustur > Network Access > Add IP Address > 0.0.0.0/0
+or
+2.  open Atlas clustur > Network Access > Add IP Address > Access Atlas from Anywhere.
+
+Important Concept in mongodb/mongoose 
+**************************************
+1. urlEncoding using NewUrlParser :-
+2. Unified Topology (Internet Topology/Network Topology/Conncection Topology)
+
+Topology : connection create client to client  also one or more server.
+
+
+Client                                                                   Server
+peer to peer connection/point to point connection/person to person.
+
+user 1 (192.x.x.1) Access Denied -----> direct connection -------------> Atlas. (192.x.x.1)
+user 2 (192.x.x.2) Access Denied -----> direct connection -------------> Atlas. (192.x.x.2)
+...
+...
+...
+user n (192.x.x.2) Access Denied -----> direct connection -------------> Atlas. (192.x.x.n)
+
+user -----------> Never possible to with Node.
+user -----------> Front End /html/css/Bootstrap/react/Angular/vue (BroadCast)
+                              |
+                        Unified Topology 
+                              |
+							  |
+							  |
+[API]----->Node Application -----> such Topology requirement -----> Atlas (peer to peer) 
+         sIp DNS(Domain Register/ISP) 
+															IP = 301.x.x.5
+         dIp X                                              cluster name :cluster0
+		 Cloud service Provide				                dc : North Verginia
+			deploy : aws-clustor							   mumbai 
+															   Hyderabad
+													  cloud : aws|azure|gcp|ibm|oracle.
+														  cloud : aws 
+    
+
+Steps to Perform crud using mongodb:-
+*************************************
+1. connecting to mongodb using nodeApp
+const mongoose = require('mongoose');
+
+2. create Schema :-
+   IQ 1:-
+   *****
+   since mongodb donot support, SCHEMA then why, we are creating schema.
+   we know that mongodb structure:-
+   
+   Record-1
+   {
+     name : "Aman",rollno : 1001,class:"Btech",marks:50
+   }
+   {
+     name : "Aman",rollno : 1002,class:"Btech",marks:50,gender:"male",city:"Lucknow",
+	 gf:"Sunny"
+   }
+   schema : To validate, information before transaction and After transaction.
+   
+   const ProductSchema = mongoose.Schema({
+        name:String,
+		rollno:Number,
+		class:String,
+		marks:Number
+   });
+   
+   step 3:- creation connection
+   mongoose.connect("mongodb://hostname:port/databasename");
+   
+   step 4: set useNewUrlParser=true and unifiedTopology = true.
+   mongoose.connect("mongodb://hostname:port/databasename",{
+   
+	useNewUrlParser:true,
+	useUnifiedTopology : true,
+	
+   });
+   Example :-
+   mongoose.connect("mongodb://localhost:27017/company",{ 
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+});
+
+  step5:- working with Models:-
+****************************************
+  save inside Models folder :-
+  Note in order to perfrom crud you always need a model.
+  insert : Model : class 
+  delete : Model : class
+  select : Model : class
+  update : Model : class 
+  
+  const ProductModel = moongoose.model("Model",schemaName,collectionName);
+  example:-
+  
+  const ProductModel = moongoose.model("Model",productSchema,"products");
+  
+  
+  step6 :- perform Query 
+  **************************
+  ProductModel.save() : insert
+  ProductModel.find() : select
+  ProductModel.update() : update
+  ProductModel.remove() : delete
+  
+  
+  step 7 : close the connection:-
+  ********************************
+  mongoose.disconnect();
+  
+  
 
 
 
 
+
+
+
+
+
+
+
+	
 Steps to connect
 *****************
 crud
